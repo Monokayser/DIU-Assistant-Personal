@@ -222,13 +222,13 @@ npm run test:backend
 
 The recommended production setup is to deploy the Python backend and a static frontend.
 
-The starter service definition for that permanent backend is in [render.yaml](/Users/schrodingersmac/Desktop/DIU%20Assistant/render.yaml).
+The starter service definition for that permanent backend is in [render.yaml](./render.yaml).
 
 Submission-facing notes:
 
-- Architecture: [docs/architecture.md](/Users/schrodingersmac/Desktop/DIU%20Assistant/docs/architecture.md)
-- Deployment note: [docs/deployment.md](/Users/schrodingersmac/Desktop/DIU%20Assistant/docs/deployment.md)
-- Observability routine: [docs/observability.md](/Users/schrodingersmac/Desktop/DIU%20Assistant/docs/observability.md)
+- Architecture: [docs/architecture.md](./docs/architecture.md)
+- Deployment note: [docs/deployment.md](./docs/deployment.md)
+- Observability routine: [docs/observability.md](./docs/observability.md)
 
 
 ## Runtime Files
