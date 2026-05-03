@@ -1308,3 +1308,43 @@ class GeminiGroundedResponder:
         )
         cleaned = re.sub(r"^(I’m the DIU Assistant\.\s*){2,}", "I’m the DIU Assistant. ", cleaned)
         return cleaned.strip()
+
+class BaseDIUAgent:
+    def __init__(self, role: str, expertise: str, api_key: str = None):
+        self.responder = GeminiGroundedResponder(api_key=api_key)
+        self.role = role
+        self.expertise = expertise
+
+    def answer_question(self, question: str, context_chunks: list[dict]) -> str:
+        # Map context chunks to the format expected by GeminiGroundedResponder
+        matches = []
+        for c in context_chunks:
+            matches.append({
+                "chunk": type("Chunk", (), {"text": c.get("text", ""), "source": c.get("url", ""), "title": c.get("title", "")})()
+            })
+        
+        # Use the responder with a custom mode or prompt if needed
+        # For simplicity, we use the mode as the role indicator
+        mode = self.role.lower().split()[0] # e.g. "admission"
+        return self.responder.answer_from_context(
+            user_question=question,
+            matches=matches,
+            language="en",
+            mode=mode
+        )
+
+class AdmissionAgent(BaseDIUAgent):
+    def __init__(self, api_key: str = None):
+        super().__init__(role="Admission Agent", expertise="Admissions and Eligibility", api_key=api_key)
+
+class CourseAdvisorAgent(BaseDIUAgent):
+    def __init__(self, api_key: str = None):
+        super().__init__(role="Course Advisor Agent", expertise="Curricula and Programs", api_key=api_key)
+
+class ScholarshipAdvisorAgent(BaseDIUAgent):
+    def __init__(self, api_key: str = None):
+        super().__init__(role="Scholarship Advisor Agent", expertise="Waivers and Fees", api_key=api_key)
+
+class GeneralAssistantAgent(BaseDIUAgent):
+    def __init__(self, api_key: str = None):
+        super().__init__(role="General Assistant", expertise="General DIU Info", api_key=api_key)
