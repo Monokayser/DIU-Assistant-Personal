@@ -9,7 +9,7 @@
     "test:backend": "python3 -m unittest discover -s tests -v",
     "test:frontend": "node --test frontend/src/apps/*/services/*.test.js frontend/src/utils/*.test.js",
     "dev": "node scripts/dev.mjs",
-    "dev:api": "python3 backend/main.py",
+    "dev:api": "python3 app/main.py",
     "dev:frontend": "npm --prefix frontend run dev",
     "preview": "npm --prefix frontend run preview",
     "build": "npm --prefix frontend run build",

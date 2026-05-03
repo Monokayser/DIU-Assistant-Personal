@@ -54,7 +54,7 @@ if (await apiIsRunning()) {
   console.log(`API server already running on ${apiBaseUrl}`);
   startApiMonitor();
 } else {
-  start("API server", "python3", ["backend/main.py"]);
+  start("API server", "python3", ["app/main.py"]);
 }
 start("Vite dev server", "npm", ["--prefix", "frontend", "run", "dev"]);
 

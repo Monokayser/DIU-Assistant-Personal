@@ -8,7 +8,8 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend ./backend
+COPY app ./app
+COPY src ./src
 COPY data ./data
 COPY tmp/.gitkeep ./tmp/.gitkeep
 COPY tmp/uploaded_contexts/.gitkeep ./tmp/uploaded_contexts/.gitkeep
@@ -18,4 +19,4 @@ RUN mkdir -p /app/tmp/uploaded_contexts /app/tmp/canvas_artifacts /app/tmp/logs
 
 EXPOSE 8765
 
-CMD ["python3", "backend/main.py"]
+CMD ["python3", "app/main.py"]

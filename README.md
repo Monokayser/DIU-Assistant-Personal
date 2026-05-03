@@ -39,7 +39,7 @@ The handbook's folder structure is a suggested baseline, so this repo keeps the 
 ## Stack
 
 - `frontend/`: React 18 + Vite UI
-- `backend/main.py`: Python HTTP API used locally and as the permanent production backend source
+- `app/main.py`: Python HTTP API used locally and as the permanent production backend source
 - `src/`: backend logic organized into `api/`, `apps/`, and `core/` subpackages
 - `supabase/`: schema and production policy SQL
 - `data/`: raw inputs and processed DIU knowledge data
@@ -49,25 +49,28 @@ The handbook's folder structure is a suggested baseline, so this repo keeps the 
 
 ## Directory Map
 
-```text
-.
-├── backend/
+├── app/
 │   ├── main.py
-│   └── src/
-│       ├── api/
-│       │   └── errors.py
-│       ├── apps/
-│       │   ├── canvas/
-│       │   │   └── services/
-│       │   │       └── artifacts.py
-│       │   └── documents/
-│       │       └── rag/
-│       │           ├── ingestion.py
-│       │           └── pipeline.py
-│       ├── core/
-│       │   ├── config.py
-│       │   ├── gemini.py
-│       │   └── knowledge.py
+│   └── streamlit_app.py
+├── src/
+│   ├── ingestion.py
+│   ├── embeddings.py
+│   ├── rag_pipeline.py
+│   ├── agents.py
+│   ├── api/
+│   │   └── errors.py
+│   ├── apps/
+│   │   ├── canvas/
+│   │   │   └── services/
+│   │   │       └── artifacts.py
+│   │   └── documents/
+│   │       └── rag/
+│   │           ├── ingestion.py
+│   │           └── pipeline.py
+│   └── core/
+│       ├── config.py
+│       ├── gemini.py
+│       └── knowledge.py
 ├── frontend/
 │   ├── public/
 │   ├── src/
