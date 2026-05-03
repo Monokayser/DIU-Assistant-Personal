@@ -1,0 +1,21 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY backend ./backend
+COPY data ./data
+COPY tmp/.gitkeep ./tmp/.gitkeep
+COPY tmp/uploaded_contexts/.gitkeep ./tmp/uploaded_contexts/.gitkeep
+COPY tmp/canvas_artifacts/.gitkeep ./tmp/canvas_artifacts/.gitkeep
+
+RUN mkdir -p /app/tmp/uploaded_contexts /app/tmp/canvas_artifacts /app/tmp/logs
+
+EXPOSE 8765
+
+CMD ["python3", "backend/main.py"]

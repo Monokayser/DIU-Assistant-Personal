@@ -1,0 +1,21 @@
+{
+  "name": "diu-knowledge-suite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gemini-powered DIU Knowledge Assistant for admissions, programs, scholarships, and fees.",
+
+  "scripts": {
+    "test:backend": "python3 -m unittest discover -s tests -v",
+    "test:frontend": "node --test frontend/src/apps/*/services/*.test.js frontend/src/utils/*.test.js",
+    "dev": "node scripts/dev.mjs",
+    "dev:api": "python3 backend/main.py",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "preview": "npm --prefix frontend run preview",
+    "build": "npm --prefix frontend run build",
+
+    "test": "npm run test:backend && npm run test:frontend",
+    "refresh:knowledge": "python3 scripts/refresh_site_index.py"
+  }
+}
+
